@@ -3,7 +3,7 @@ import moment from 'moment';
 
 class TodoItem extends Component {   
     render() {
-        const {item, date, handleDelete, handleEdit} = this.props
+        const {item, date, handleDelete, handleEdit, handleView} = this.props
         return (
             <div>
                 <li className="list-group-item text-capitalize d-flex justify-content-between">
@@ -24,6 +24,9 @@ class TodoItem extends Component {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="todo-icon">
+                            <span className="mx-2 text-info" onClick={handleView}>
+                                <i className="fa fa-eye"></i>
+                            </span>
                             <span className="mx-2 text-success" onClick={handleEdit}>
                                 <i className="fa fa-pencil"></i>
                             </span>
