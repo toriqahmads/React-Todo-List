@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import TodoList from './TodoList';
 import uuid from 'uuid';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 class TodoInput extends Component {
     constructor(props) {
@@ -10,13 +12,20 @@ class TodoInput extends Component {
              items: [],
              id: uuid(),
              item: '',
+             date: new Date(),
              editItem: false
         }
     }
 
     handleChange = (e) => {
         this.setState({
-            item: e.target.value
+            [e.target.name]: e.target.value
+        })
+    }
+
+    handleDate = (date) => {
+        this.setState({
+            date: date
         })
     }
 
@@ -74,17 +83,36 @@ class TodoInput extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="card card-body my-3">
-                    <form action="" method="post" onSubmit={this.handleSubmit}>
-                        <div className="input-group">
-                            <div className="input-group-prepend">
-                                <div className="input-group-text bg-primary text-white">
-                                    <i className="fa fa-book"></i>
+                <form action="" method="post" className="card my-3" onSubmit={this.handleSubmit}>
+                    <div className="card-body">
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className="input-group">
+                                    <div className="input-group-prepend">
+                                        <div className="input-group-text bg-primary text-white">
+                                            <i className="fa fa-book"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text" name="item" id="item" className="form-control text-capitalize" 
+                                        placeholder="add a todo item" value={this.state.item} onChange={this.handleChange}
+                                    />
                                 </div>
                             </div>
-                            <input type="text" name="item" id="item" className="form-control text-capitalize" 
-                                placeholder="add a todo item" value={this.state.item} onChange={this.handleChange}
-                            />
+                            
+                            <div className="col-md-6">
+                            <div className="input-group">
+                                <div className="input-group-prepend">
+                                    <div className="input-group-text bg-primary text-white">
+                                        <i className="fa fa-calendar"></i>
+                                    </div>
+                                </div>
+                                <DatePicker
+                                    name="item" id="item" className="form-control text-capitalize"
+                                    selected={this.state.date}
+                                    onChange={this.handleDate}
+                                />
+                            </div>
+                            </div>
                         </div>
                         <button type="submit" className={
                             this.state.editItem ? 
@@ -93,8 +121,8 @@ class TodoInput extends Component {
                         }>
                             {this.state.editItem ? 'Edit Item' : 'Add Item' }
                         </button>
-                    </form>
-                </div>
+                    </div>
+                </form>
                 <TodoList items={this.state.items} 
                     clearList={this.clearList} 
                     handleDelete={this.handleDelete}
