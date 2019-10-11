@@ -60,11 +60,10 @@ class TodoInput extends Component {
             description: '',
             id: uuid(),
             date: new Date(),
-            editItem: false
+            editItem: false,
+            modal: false
         })
         
-        this.modal.el.style.display = 'none';
-        this.modal.el.classList.remove("show");
     }
 
     clearList = () => {
@@ -107,9 +106,7 @@ class TodoInput extends Component {
             return item.id === id
         })
 
-        this.modal.el.style.display = 'block';
-        this.modal.el.classList.add("show");
-        
+
         this.setState({
             id: id,
             item: selectedItem.item,
@@ -192,6 +189,7 @@ class TodoInput extends Component {
                     key={this.state.id} 
                     item={this.state.item}
                     date={this.state.date}
+                    modal={this.state.modal}
                     description={this.state.description}  
                     handleCloseModal={this.handleCloseModal} 
                     ref={e => this.modal = e}

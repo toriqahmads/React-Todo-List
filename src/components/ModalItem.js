@@ -3,9 +3,10 @@ import moment from 'moment';
 
 class ModalItem extends Component {   
     render() {
-        const {item, date, description, handleCloseModal} = this.props
+        const {item, date, description, handleCloseModal, modal} = this.props
+        const styles = modal ? {display: "block"} : {display: "none"}
         return (
-            <div className="modal fade" id="modalitem" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" ref={e => this.el = e}>
+            <div className="modal fade show" id="modalitem" tabIndex="-1" style={styles} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" ref={e => this.el = e}>
                 <div className="modal-dialog modal-dialog-centered" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
