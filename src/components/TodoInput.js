@@ -24,6 +24,7 @@ class TodoInput extends Component {
     }
 
     handleDate = (date) => {
+        console.log(date)
         this.setState({
             date: date
         })
@@ -34,7 +35,8 @@ class TodoInput extends Component {
 
         const newItem = {
             id: this.state.id,
-            item: this.state.item
+            item: this.state.item,
+            date: this.state.date
         }
 
         const updatedItems = [...this.state.items, newItem]
@@ -43,6 +45,7 @@ class TodoInput extends Component {
             items: updatedItems,
             item: '',
             id: uuid(),
+            date: new Date(),
             editItem: false
         })
     }
@@ -76,6 +79,7 @@ class TodoInput extends Component {
             id: id,
             items: filteredItems,
             item: selectedItem.item,
+            date: selectedItem.date,
             editItem: true
         })
     }
@@ -110,6 +114,9 @@ class TodoInput extends Component {
                                     name="item" id="item" className="form-control text-capitalize"
                                     selected={this.state.date}
                                     onChange={this.handleDate}
+                                    showTimeSelect
+                                    timeFormat="HH:mm"
+                                    dateFormat="Pp"
                                 />
                             </div>
                             </div>
