@@ -207,7 +207,8 @@ class TodoInput extends Component {
                     />
                 
                 <ModalItem
-                    key={this.state.id} 
+                    key={this.state.id}
+                    title={this.state.title} 
                     item={this.state.item}
                     date={this.state.date}
                     modal={this.state.modal}
