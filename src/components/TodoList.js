@@ -13,7 +13,8 @@ class TodoList extends Component {
                     {
                         items.map((item) => {
                             return <TodoItem 
-                                key={item.id} 
+                                key={item.id}
+                                title={item.title} 
                                 item={item.item}
                                 date={item.date}
                                 description={item.description} 

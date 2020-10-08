@@ -3,14 +3,14 @@ import moment from 'moment';
 
 class TodoItem extends Component {   
     render() {
-        const {item, date, handleDelete, handleEdit, handleView} = this.props
+        const {title, date, handleDelete, handleEdit, handleView} = this.props
         return (
             <div>
                 <li className="list-group-item text-capitalize d-flex justify-content-between">
                     <div className="row">
                         <div className="col-md-12">
                             <h6>
-                                {item}
+                                {title}
                             </h6>
                         </div>
                     </div>
