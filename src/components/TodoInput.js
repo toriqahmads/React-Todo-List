@@ -12,6 +12,7 @@ class TodoInput extends Component {
         this.state = {
              items: [],
              id: uuid(),
+             title: '',
              item: '',
              description: '',
              date: new Date(),
@@ -37,6 +38,7 @@ class TodoInput extends Component {
 
         const newItem = {
             id: this.state.id,
+            title: this.state.title,
             item: this.state.item,
             description: this.state.description,
             date: this.state.date
@@ -47,6 +49,7 @@ class TodoInput extends Component {
         this.setState({
             items: updatedItems,
             item: '',
+            title: '',
             description: '',
             id: uuid(),
             date: new Date(),
@@ -57,6 +60,7 @@ class TodoInput extends Component {
     handleCloseModal = () => {
         this.setState({
             item: '',
+            title: '',
             description: '',
             id: uuid(),
             date: new Date(),
@@ -94,6 +98,7 @@ class TodoInput extends Component {
         this.setState({
             id: id,
             items: filteredItems,
+            title: selectedItem.title,
             item: selectedItem.item,
             date: selectedItem.date,
             description: selectedItem.description,
@@ -110,6 +115,7 @@ class TodoInput extends Component {
         this.setState({
             id: id,
             item: selectedItem.item,
+            title: selectedItem.title,
             date: selectedItem.date,
             description: selectedItem.description,
             modal: true
@@ -121,6 +127,21 @@ class TodoInput extends Component {
             <React.Fragment>
                 <form action="" method="post" className="card my-3" onSubmit={this.handleSubmit}>
                     <div className="card-body">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <div className="input-group">
+                                    <div className="input-group-prepend">
+                                        <div className="input-group-text bg-primary text-white">
+                                            <i className="fa fa-book"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text" name="title" id="title" className="form-control text-capitalize" 
+                                        placeholder="add a todo title" value={this.state.title} onChange={this.handleChange}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <hr></hr>
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="input-group">
